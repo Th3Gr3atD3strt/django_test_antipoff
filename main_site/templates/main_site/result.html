@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>results</title>
+</head>
+<body>
+<p> results for {{ request.user.username }}</p>
+<table border="1">
+  <tr>
+      <td>latitude</td>
+      <td>longitude</td>
+      <td>number</td>
+      <td>QUERY_ID</td>
+      <td>RESULT</td>
+      <td>USER</td>
+  </tr>
+    {% for answer in answers %}
+  <tr>
+      <td>{{ answer.lattidute }}</td>
+      <td>{{ answer.longitude }}</td>
+      <td>{{ answer.number }}</td>
+      <td>{{ answer.pk }}</td>
+      <td>{{ answer.result }}</td>
+      <td>{{ answer.user.username }}</td>
+  </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="{% url 'logout' %}">Выйти из аккаунта</a>
+
+</body>
+</html>

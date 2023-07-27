@@ -5,12 +5,20 @@
     <title>Title</title>
 </head>
 <body>
+{{ request.user.username }}, воспользуйтесь фомой ниже:
+<br>
+<br>
 <form action="#" method="post">
-    {% csrf_token %}
+{% csrf_token %}
     {% for f in form %}
+        {{ f.label }}
         {{ f }}
     {% endfor %}
-    <button type="submit" > Отправить</button>
+    <button type="submit"> Отправить
+    </button>
 </form>
+<br>
+<br>
+<a href="{% url 'logout' %}">Выйти из аккаунта</a>
 </body>
 </html>

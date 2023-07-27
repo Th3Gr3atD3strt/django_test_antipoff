@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.http import HttpRequest, HttpResponse
 from django.urls import path
 
-from main_site.views import main_view
+from main_site.views import main_view, result_view, Loginator, Registrator, logout_view
 
 urlpatterns = [
+    path('', Loginator.as_view(), name='auth'),
+    path('register', Registrator.as_view(), name='register'),
+    path('logout', logout_view, name='logout'),
     path('admin/', admin.site.urls),
     path('query/', main_view, name='query'),
-    path('result/', lambda x:HttpResponse('result'), name='result'),
-    path('ping/', lambda x:x, name='ping'),
+    path('result/', result_view, name='result'),
+    path('ping/', lambda x:HttpResponse('Наш сервис работает, пожалуйста, зарегистрируйтесь.'), name='ping'),
 ]
